@@ -14,6 +14,10 @@ var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI); 
 var app = express()
 
+mongoose.once('open',()=>{
+  console.log("Connected to MongoDB")
+})
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs');
